@@ -1,105 +1,184 @@
-<!DOCTYPE html>
-<html lang="en" data-theme="dark">
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Chekwube Onyeka Utomi | Quantum Computing Researcher</title>
-    <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-    <header class="header">
-        <nav class="navbar">
-            <div class="logo">C.O. Utomi</div>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#education">Education</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-            <button id="theme-toggle" class="theme-toggle">Toggle Theme</button>
-        </nav>
-    </header>
+/* Base Theme Variables */
+:root {
+    --bg-dark: #0d0d0d;
+    --bg-light: #f5f5f5;
+    --text-dark: #f0f0f0;
+    --text-light: #111;
+    --primary: #4fc3f7;
+    --accent: #90caf9;
+    --card-dark: #1a1a1a;
+    --card-light: #ffffff;
+    --transition: 0.4s ease;
+}
 
-    <section id="home" class="hero">
-        <div class="hero-content">
-            <h1 class="title animate-slide">Chekwube Onyeka Utomi</h1>
-            <h2 class="subtitle animate-fade">AI for Science MSc. Student | Quantum Computing Researcher</h2>
-            <p class="tagline animate-rise">Exploring the intersection of quantum systems, machine learning, and computational science.</p>
-            <div class="hero-buttons">
-                <a href="cv.pdf" class="btn">Download CV</a>
-                <a href="#contact" class="btn btn-outline">Contact Me</a>
-            </div>
-        </div>
-        <div class="hero-image animate-zoom">
-            <img src="profile.jpg" alt="Profile Photo" />
-        </div>
-    </section>
+/* Theme Switching */
+html[data-theme="dark"] {
+    --bg: var(--bg-dark);
+    --text: var(--text-dark);
+    --card: var(--card-dark);
+}
+html[data-theme="light"] {
+    --bg: var(--bg-light);
+    --text: var(--text-light);
+    --card: var(--card-light);
+}
 
-    <section id="about" class="about section">
-        <h2 class="section-title">About Me</h2>
-        <p>
-            I am a master's student at AIMS South Africa, specializing in AI for Science, with a growing interest in
-            quantum computing. My academic journey is supported by Google DeepMind, and my focus lies in quantum
-            algorithms, machine learning, and scientific computing.
-        </p>
-    </section>
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    transition: background var(--transition), color var(--transition);
+}
 
-    <section id="projects" class="projects section">
-        <h2 class="section-title">Projects & Research</h2>
-        <div class="project-grid">
-            <div class="project-card animate-rise">
-                <h3>Quantum Machine Learning</h3>
-                <p>Implementing hybrid quantum-classical models using Qiskit and PennyLane.</p>
-                <a href="#" class="project-link">View Project</a>
-            </div>
-            <div class="project-card animate-rise">
-                <h3>Scientific NLP</h3>
-                <p>Developing transformer-based models for low-resource African languages.</p>
-                <a href="#" class="project-link">View Project</a>
-            </div>
-            <div class="project-card animate-rise">
-                <h3>Quantum Algorithms</h3>
-                <p>Exploring variational algorithms, Grover's search, and quantum optimization.</p>
-                <a href="#" class="project-link">View Project</a>
-            </div>
-        </div>
-    </section>
+/* Navbar */
+.header {
+    position: sticky;
+    top: 0;
+    background: var(--bg);
+    padding: 20px 40px;
+    z-index: 1000;
+    border-bottom: 1px solid #333;
+}
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.nav-links {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+}
+.nav-links a {
+    color: var(--text);
+    text-decoration: none;
+    transition: color var(--transition);
+}
+.nav-links a:hover {
+    color: var(--primary);
+}
+.theme-toggle {
+    padding: 10px 20px;
+    border: none;
+    background: var(--primary);
+    color: #000;
+    cursor: pointer;
+    border-radius: 8px;
+}
 
-    <section id="education" class="education section">
-        <h2 class="section-title">Education</h2>
-        <ul>
-            <li><strong>AI for Science Master's Program</strong>, AIMS South Africa (Sponsored by Google DeepMind)</li>
-            <li><strong>BSc.</strong> — Previous Degree</li>
-        </ul>
-    </section>
+/* Hero */
+.hero {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 80px 40px;
+    gap: 40px;
+}
+.hero-image img {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--primary);
+}
+.title {
+    font-size: 3rem;
+    color: var(--primary);
+}
+.subtitle {
+    font-size: 1.5rem;
+    opacity: 0.8;
+}
 
-    <section id="skills" class="skills section">
-        <h2 class="section-title">Skills</h2>
-        <div class="skill-grid">
-            <div><h3>Technical Skills</h3><p>Python, Qiskit, Cirq, PyTorch, ML, NLP, Quantum ML</p></div>
-            <div><h3>Tools</h3><p>Git, Linux, Docker</p></div>
-            <div><h3>Soft Skills</h3><p>Research Writing, Problem Solving, Collaboration</p></div>
-        </div>
-    </section>
+/* Sections */
+.section {
+    padding: 60px 40px;
+}
+.section-title {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: var(--accent);
+}
 
-    <section id="contact" class="contact section">
-        <h2 class="section-title">Contact</h2>
-        <p>Email: <a href="mailto:chekwubeutomi@gmail.com">chekwubeutomi@gmail.com</a></p>
-        <p>LinkedIn | GitHub | Google Scholar</p>
-        <form class="contact-form">
-            <input type="text" placeholder="Your Name" required />
-            <input type="email" placeholder="Your Email" required />
-            <textarea placeholder="Your Message" required></textarea>
-            <button type="submit">Send Message</button>
-        </form>
-    </section>
+/* Project Cards */
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+.project-card {
+    background: var(--card);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+    transition: transform 0.3s ease;
+}
+.project-card:hover {
+    transform: scale(1.05);
+}
+.project-link {
+    color: var(--primary);
+    text-decoration: none;
+}
 
-    <footer class="footer">
-        <p>© 2025 Chekwube Onyeka Utomi. All Rights Reserved.</p>
-    </footer>
+/* Contact */
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 500px;
+}
+.contact-form input, .contact-form textarea {
+    padding: 12px;
+    border-radius: 8px;
+    border: none;
+    background: var(--card);
+    color: var(--text);
+}
+.contact-form button {
+    padding: 12px;
+    background: var(--primary);
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+}
 
-    <script src="script.js"></script>
-</body>
-</html>
+/* Footer */
+.footer {
+    text-align: center;
+    padding: 20px;
+    border-top: 1px solid #333;
+    margin-top: 40px;
+}
+
+/* Animations */
+.animate-slide {
+    animation: slide 1s ease forwards;
+}
+@keyframes slide {
+    from { opacity: 0; transform: translateX(-50px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+.animate-fade {
+    animation: fade 1.5s ease forwards;
+}
+@keyframes fade {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+.animate-rise {
+    animation: rise 1.2s ease forwards;
+}
+@keyframes rise {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+.animate-zoom {
+    animation: zoom 1s ease forwards;
+}
+@keyframes zoom {
+    from { opacity: 0; transform: scale(0.8); }
+    to { opacity: 1; transform: scale(1); }
+}
